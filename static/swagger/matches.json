@@ -1,0 +1,94 @@
+{
+    "swagger": "2.0",
+    "info": { 
+        "title": "Social Swap API",
+        "description": "API Documentation for Social Swap endpoints"
+    },
+    "paths": {
+        "/direct_swap": {
+            "get": {
+                "tags": ["matches"],
+                "description": "Retrieves direct swap matches for a given tenant.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The ID of the tenant",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list of matching tenants",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "TenantB_Name": {
+                                        "type": "string",
+                                        "description": "Name of the tenant to swap with"
+                                    },
+                                    "DesiredLocation_B": {
+                                        "type": "string",
+                                        "description": "Location the tenant desires to move to"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Tenant ID is missing"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/multipoint_swap": { 
+            "get": {
+                "tags": ["matches"],
+                "description": "Retrieves multi point swap matches for a given tenant.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The ID of the tenant",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list of matching tenants",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "TenantB_Name": {
+                                        "type": "string",
+                                        "description": "Name of the tenant to swap with"
+                                    },
+                                    "DesiredLocation_B": {
+                                        "type": "string",
+                                        "description": "Location the tenant desires to move to"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Tenant ID is missing"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }
+    }
+}
+

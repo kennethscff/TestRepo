@@ -1,0 +1,27 @@
+{
+    "swagger": "2.0",
+    "info": { 
+        "title": "Social Swap API",
+        "description": "API Documentation for Social Swap endpoints"
+    },
+    "paths": {
+        "/direct_swap": {
+            "$ref": "matches.json#/paths/~1direct_swap" 
+        },
+        "/multipoint_swap": {
+            "$ref": "matches.json#/paths/~1multipoint_swap"
+        },
+        "/register": {
+            "$ref": "user.json#/paths/~1register" 
+        },
+        "/login": {
+            "$ref": "user.json#/paths/~1login"  
+        },
+        "/logout": {
+            "$ref": "user.json#/paths/~1logout" 
+        },
+        "/whoami": {
+            "$ref": "user.json#/paths/~1whoami" 
+        }
+    }
+} 
