@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_swagger_ui import get_swaggerui_blueprint
+from flask_cors import CORS
 from swaggertools import resolve
 
 from extensions import db
@@ -11,7 +12,11 @@ import os
 
 def create_app():
     app = Flask(__name__)
+    CORS(app)
+    
     app.secret_key = os.urandom(24)
+
+    app.config['CORS_HEADERS'] = 'Content-Type'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:faceb00k?@localhost/homes'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
