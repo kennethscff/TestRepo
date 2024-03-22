@@ -1,10 +1,19 @@
 # matches.py
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, render_template
 from extensions import db
 from sqlalchemy import text
 
 
 matches = Blueprint('matches', __name__)
+
+@matches.route('/about', methods=['GET'])
+def about():
+    return render_template('aboutus.html')
+
+@matches.route('/search', methods=['GET'])
+def search():
+    print(request.args)
+    return render_template('index.html')
 
 @matches.route('/direct_swap', methods=['GET'])
 def get_direct_swap():

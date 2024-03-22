@@ -284,3 +284,24 @@ try {
 } catch (error) {
     
 }
+
+$(document).ready(function() {
+    $('#search').click(function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Get values from form fields  
+        let location = $('#job-keyword').val();
+        let radius = $('#choices-catagory-buy').val();
+        let bedrooms = $('#choices-min-price-buy').val();
+        let rent = $('#choices-max-price-buy').val();
+
+        // Construct the search URL
+        let searchUrl = '/search?location=' + encodeURIComponent(location) + 
+                        '&radius=' + radius + 
+                        '&bedroom=' + bedrooms +
+                        '&rent='  + rent;
+
+        // Redirect the user to the search URL
+        window.location.href = searchUrl;
+    });
+});

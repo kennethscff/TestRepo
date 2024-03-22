@@ -3521,6 +3521,12 @@ button:not(:disabled) {
   box-shadow: 0 5px 13px rgba(30, 41, 59, 0.2) !important;
 }
 
+.categories .img-fluid {
+  height: 200px; /* Set a fixed height */
+  width: 100%; /* Make sure the width is always 100% */
+  object-fit: cover; /* This will make sure that your images cover the area, are fully contained within it, and are not stretched */
+  object-position: center; /* This will center your images within the area */
+}
 /*********************************/
 /*         Testimonial           */
 /*===============================*/
