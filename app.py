@@ -9,6 +9,7 @@ from extensions import db
 from home_management import home_management
 from matches import matches
 from user import users
+from utils import utils
 import os
 
 def create_app():
@@ -40,6 +41,7 @@ def create_app():
     app.register_blueprint(matches)
     app.register_blueprint(users)
     app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
+    app.register_blueprint(utils)
 
     @app.route('/')
     def hello_world():

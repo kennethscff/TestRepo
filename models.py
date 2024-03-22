@@ -4,6 +4,20 @@ from flask_bcrypt import Bcrypt
 
 bcrypt = Bcrypt()
 
+class Typeahead(db.Model):
+    __tablename__ = 'typeahead'
+    id = db.Column(db.Integer, primary_key=True)
+    name1 = db.Column(db.String(50))
+    lat = db.Column(db.Numeric(10, 7))
+    lng = db.Column(db.Numeric(10, 7))
+    label = db.Column(db.String(50))
+    local_type_id = db.Column(db.Integer)
+    county_unitary_id = db.Column(db.Integer)
+    slug = db.Column(db.String(50))
+    redirect_slug = db.Column(db.String(50))
+    region = db.Column(db.Integer)
+    country = db.Column(db.Integer)
+
 class Tenant(db.Model):
     __tablename__ = 'tenant'
     TenantID = db.Column(db.Integer, primary_key=True)

@@ -291,15 +291,9 @@ $(document).ready(function() {
 
         // Get values from form fields  
         let location = $('#job-keyword').val();
-        let radius = $('#choices-catagory-buy').val();
-        let bedrooms = $('#choices-min-price-buy').val();
-        let rent = $('#choices-max-price-buy').val();
 
         // Construct the search URL
-        let searchUrl = '/search?location=' + encodeURIComponent(location) + 
-                        '&radius=' + radius + 
-                        '&bedroom=' + bedrooms +
-                        '&rent='  + rent;
+        let searchUrl = '/search?location=' + encodeURIComponent(location)
 
         // Redirect the user to the search URL
         window.location.href = searchUrl;
