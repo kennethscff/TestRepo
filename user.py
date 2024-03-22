@@ -1,6 +1,8 @@
 from flask import Blueprint, request, jsonify, session
 from flask_bcrypt import Bcrypt
-from models import User
+from flask_jwt_extended import create_access_token
+
+from models import Resident
 from app import db
 
 users = Blueprint('users', __name__)
@@ -14,11 +16,11 @@ def register():
 
     # Input validation (ensure email and password exist, etc.)
 
-    user = User.query.filter_by(email=email).first()
+    user = Resident.query.filter_by(email=email).first()
     if user:
         return jsonify({'error': 'Email already exists'}), 400
 
-    new_user = User(email=email, password=password)  # Uses password setter
+    new_user = Resident(email=email, password=password)  # Uses password setter
     db.session.add(new_user)
     db.session.commit()
 
@@ -30,10 +32,11 @@ def login():
     email = data.get('email') 
     password = data.get('password')
 
-    user = User.query.filter_by(email=email).first()
+    user = Resident.query.filter_by(email=email).first()
     if user and user.verify_password(password):
-        session['user_id'] = user.id 
-        return jsonify({'message': 'Logged in successfully'}), 200
+        access_token = create_access_token(identity=user.resident_id)
+        session['user_id'] = user.resident_id 
+        return jsonify(access_token=access_token), 200
     else:
         return jsonify({'error': 'Invalid email or password'}), 401
 

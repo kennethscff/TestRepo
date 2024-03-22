@@ -1,7 +1,8 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_swagger_ui import get_swaggerui_blueprint
 from flask_cors import CORS
+from flask_jwt_extended import JWTManager
 from swaggertools import resolve
 
 from extensions import db
@@ -17,9 +18,11 @@ def create_app():
     app.secret_key = os.urandom(24)
 
     app.config['CORS_HEADERS'] = 'Content-Type'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:faceb00k?@localhost/homes'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://admin:kbcbhbjb@socialx.cubywqkqujxb.eu-west-2.rds.amazonaws.com/socialx'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['JWT_SECRET_KEY'] = 'kqwowksckpoa-opvlspokvmas-qwokpfaskzpk-cakopqwppak' 
 
+    jwt = JWTManager(app)
     SWAGGER_URL = '/swagger'
     API_URL = '/static/swagger/swagger.json'
     swagger_ui_blueprint = get_swaggerui_blueprint(
@@ -40,7 +43,7 @@ def create_app():
 
     @app.route('/')
     def hello_world():
-        return 'Hello, World!'
+        return render_template('index.html')
     
     @app.route('/api-docs') 
     def get_swagger_spec():
