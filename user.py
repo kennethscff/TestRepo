@@ -10,6 +10,7 @@ bcrypt = Bcrypt()
 
 @users.route('/login', methods=["GET"])
 def render_login():
+    session['next'] = request.referrer
     return render_template('auth-login.html')
 
 @users.route('/register', methods=["POST"])
@@ -33,13 +34,14 @@ def register():
 @users.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
-    email = data.get('email') 
+    email = data.get('email')
     password = data.get('password')
 
     user = Resident.query.filter_by(email=email).first()
     if user and user.verify_password(password):
         session['user_id'] = user.resident_id
-        return jsonify({'success': True}), 200
+        next_url = session.pop('next', '/')  # Default to home if not set
+        return jsonify({'success': True, 'next_url': next_url}), 200
     else:
         return jsonify({'error': 'Invalid email or password'}), 401
 

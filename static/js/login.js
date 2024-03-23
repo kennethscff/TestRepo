@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
       })
       .then(data => {
         console.log('Success:', data);
-        window.location.href = '/'; // Redirect to the homepage or dashboard
+        window.location.href = data.next_url; // Redirect to the returned URL
       })
       .catch((error) => {
         console.error('Error:', error);
