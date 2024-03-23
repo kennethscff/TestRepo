@@ -29,4 +29,13 @@ def facets():
 
 @utils.route('/search', methods=['GET'])
 def search():
-    return render_template('search_results.html')
+    requested_location = request.args.get('location', '')
+    current_location = request.args.get('currentLocation', '')
+    parking = request.args.get('parking', '')
+    garden = request.args.get('garden', '')
+    access = request.args.get('accessible', '')
+    min_bedroom = request.args.get('min_bedroom', '')
+    max_price = request.args.get('max_price', '')
+    category = request.args.get('category', '')
+
+    return render_template('search_results.html', location=requested_location, current_location=current_location, parking=parking, garden=garden, accessible=access, min_bedroom=min_bedroom, max_price=max_price, category=category)

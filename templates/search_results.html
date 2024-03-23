@@ -10,7 +10,15 @@
         <section class="section">
             <div class="container">
                 <div class="row g-4">
-                    <div class="col-lg-4 col-md-6 col-12">
+                    <div class="col-12 d-md-none pt-5">
+                        <!-- Button to toggle the facets box -->
+                        <button class="btn btn-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#facetsBox" aria-expanded="false" aria-controls="facetsBox">
+                            Show Filters
+                        </button>
+                    </div>
+            
+                    <!-- Collapsible Facets Box -->
+                    <div class="col-lg-4 col-md-6 col-12 collapse d-md-block" id="facetsBox">
                         {% include 'facets-box.html' %}
                     </div><!--end col-->
 
@@ -20,7 +28,7 @@
                                 <div class="card property property-list border-0 shadow position-relative overflow-hidden rounded-3">
                                     <div class="d-lg-flex">
                                         <div class="property-image md-full position-relative overflow-hidden shadow flex-md-shrink-0 rounded-3 m-2">
-                                            <img src="images/property/1.jpg" class="img-fluid h-100 w-100" alt="">
+                                            <img src="./static/images/property/1.jpg" class="img-fluid h-100 w-100" alt="">
                                             <ul class="list-unstyled property-icon">
                                                 <li class=""><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="home" class="icons"></i></a></li>
                                                 <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="heart" class="icons"></i></a></li>
@@ -72,7 +80,7 @@
                                 <div class="card property property-list border-0 shadow position-relative overflow-hidden rounded-3">
                                     <div class="d-lg-flex">
                                         <div class="property-image md-full position-relative overflow-hidden shadow flex-md-shrink-0 rounded-3 m-2">
-                                            <img src="images/property/2.jpg" class="img-fluid h-100 w-100" alt="">
+                                            <img src="./static/images/property/2.jpg" class="img-fluid h-100 w-100" alt="">
                                             <ul class="list-unstyled property-icon">
                                                 <li class=""><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="home" class="icons"></i></a></li>
                                                 <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="heart" class="icons"></i></a></li>
@@ -123,7 +131,7 @@
                                 <div class="card property property-list border-0 shadow position-relative overflow-hidden rounded-3">
                                     <div class="d-lg-flex">
                                         <div class="property-image md-full position-relative overflow-hidden shadow flex-md-shrink-0 rounded-3 m-2">
-                                            <img src="images/property/3.jpg" class="img-fluid h-100 w-100" alt="">
+                                            <img src="./static/images/property/3.jpg" class="img-fluid h-100 w-100" alt="">
                                             <ul class="list-unstyled property-icon">
                                                 <li class=""><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="home" class="icons"></i></a></li>
                                                 <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="heart" class="icons"></i></a></li>
@@ -665,13 +673,15 @@
         <!-- Back to top -->
 
         <!-- JAVASCRIPTS -->
-	    <script src="js/bootstrap.bundle.min.js"></script>
+	    <script src="./static/js/bootstrap.bundle.min.js"></script>
         <!-- Tobii -->
-        <script src="js/tobii.min.js"></script>
+        <script src="./static/js/tobii.min.js"></script>
         <!-- Icons -->
-        <script src="js/feather.min.js"></script>
+        <script src="./static/js/feather.min.js"></script>
 	    <!-- Custom -->
-	    <script src="js/plugins.init.js"></script>
-	    <script src="js/app.js"></script>
+	    <script src="./static/js/plugins.init.js"></script>
+	    <script src="./static/js/app.js"></script>
+        <script src="./static/js/utils.js"></script>
+        <script src="./static/js/search_results.js"></script>
     </body>
 </html>
