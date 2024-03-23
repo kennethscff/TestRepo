@@ -24,50 +24,44 @@
 
                     <div class="col-lg-8 col-md-6 col-12">
                         <div class="row g-4">
+                            <!-- Loop through each result in the results array -->
+                            {% for result in results %}
                             <div class="col-12">
                                 <div class="card property property-list border-0 shadow position-relative overflow-hidden rounded-3">
                                     <div class="d-lg-flex">
                                         <div class="property-image md-full position-relative overflow-hidden shadow flex-md-shrink-0 rounded-3 m-2">
-                                            <img src="./static/images/property/1.jpg" class="img-fluid h-100 w-100" alt="">
-                                            <ul class="list-unstyled property-icon">
-                                                <li class=""><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="home" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="heart" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="camera" class="icons"></i></a></li>
-                                            </ul>
+                                            <img src="{{ result.image_url }}" class="img-fluid h-100 w-100" alt="">
                                         </div>
                                         <div class="card-body content p-3">
-                                            <a href="property-detail.html" class="title fs-5 text-dark fw-medium">10765 Hillshire Ave, Baton Rouge, LA 70810, USA</a>
-
+                                            <a href="property-detail.html" class="title fs-5 text-dark fw-medium">{{ result.title }}</a>
                                             <ul class="list-unstyled mt-3 py-3 border-top border-bottom d-flex align-items-center justify-content-between">
                                                 <li class="d-flex align-items-center me-3">
                                                     <i class="mdi mdi-arrow-expand-all fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">8000sqf</span>
+                                                    <span class="text-muted">{{ result.square_feet }}sqf</span>
                                                 </li>
-                
                                                 <li class="d-flex align-items-center me-3">
                                                     <i class="mdi mdi-bed fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Beds</span>
+                                                    <span class="text-muted">{{ result.bedrooms }} Beds</span>
                                                 </li>
-                
                                                 <li class="d-flex align-items-center">
                                                     <i class="mdi mdi-shower fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Baths</span>
+                                                    <span class="text-muted">{{ result.bathrooms }} Baths</span>
                                                 </li>
                                             </ul>
                                             <ul class="list-unstyled d-flex justify-content-between mt-2 mb-0">
                                                 <li class="list-inline-item mb-0">
                                                     <span class="text-muted">Price</span>
-                                                    <p class="fw-medium mb-0">$5000</p>
+                                                    <p class="fw-medium mb-0">£{{ result.price }}</p>
                                                 </li>
+                                                
                                                 <li class="list-inline-item mb-0 text-muted">
-                                                    <span class="text-muted">Rating</span>
+                                                    <span class="text-muted">Match score</span>
                                                     <ul class="fw-medium text-warning list-unstyled mb-0">
+                                                        <!-- Assuming a maximum rating of 5, generate stars accordingly -->
+                                                        {% for i in range(result.match) %}
                                                         <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0 text-dark">5.0(30)</li>
+                                                        {% endfor %}
+                                                        <li class="list-inline-item mb-0 text-dark">{{ result.rating }}</li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -75,593 +69,41 @@
                                     </div>
                                 </div><!--end items-->
                             </div><!--end col-->
-                            
-                            <div class="col-12">
-                                <div class="card property property-list border-0 shadow position-relative overflow-hidden rounded-3">
-                                    <div class="d-lg-flex">
-                                        <div class="property-image md-full position-relative overflow-hidden shadow flex-md-shrink-0 rounded-3 m-2">
-                                            <img src="./static/images/property/2.jpg" class="img-fluid h-100 w-100" alt="">
-                                            <ul class="list-unstyled property-icon">
-                                                <li class=""><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="home" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="heart" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="camera" class="icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="card-body content p-3">
-                                            <a href="property-detail.html" class="title fs-5 text-dark fw-medium">59345 STONEWALL DR, Plaquemine, LA 70764, USA</a>
-                                            <ul class="list-unstyled mt-3 py-3 border-top border-bottom d-flex align-items-center justify-content-between">
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-arrow-expand-all fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">8000sqf</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-bed fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Beds</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center">
-                                                    <i class="mdi mdi-shower fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Baths</span>
-                                                </li>
-                                            </ul>
-                                            <ul class="list-unstyled d-flex justify-content-between mt-2 mb-0">
-                                                <li class="list-inline-item mb-0">
-                                                    <span class="text-muted">Price</span>
-                                                    <p class="fw-medium mb-0">$5000</p>
-                                                </li>
-                                                <li class="list-inline-item mb-0 text-muted">
-                                                    <span class="text-muted">Rating</span>
-                                                    <ul class="fw-medium text-warning list-unstyled mb-0">
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0 text-dark">5.0(30)</li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div><!--end items-->
-                            </div><!--end col-->
-                            
-                            <div class="col-12">
-                                <div class="card property property-list border-0 shadow position-relative overflow-hidden rounded-3">
-                                    <div class="d-lg-flex">
-                                        <div class="property-image md-full position-relative overflow-hidden shadow flex-md-shrink-0 rounded-3 m-2">
-                                            <img src="./static/images/property/3.jpg" class="img-fluid h-100 w-100" alt="">
-                                            <ul class="list-unstyled property-icon">
-                                                <li class=""><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="home" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="heart" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="camera" class="icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="card-body content p-3">
-                                            <a href="property-detail.html" class="title fs-5 text-dark fw-medium">3723 SANDBAR DR, Addis, LA 70710, USA</a>
-                                            <ul class="list-unstyled mt-3 py-3 border-top border-bottom d-flex align-items-center justify-content-between">
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-arrow-expand-all fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">8000sqf</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-bed fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Beds</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center">
-                                                    <i class="mdi mdi-shower fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Baths</span>
-                                                </li>
-                                            </ul>
-                                            <ul class="list-unstyled d-flex justify-content-between mt-2 mb-0">
-                                                <li class="list-inline-item mb-0">
-                                                    <span class="text-muted">Price</span>
-                                                    <p class="fw-medium mb-0">$5000</p>
-                                                </li>
-                                                <li class="list-inline-item mb-0 text-muted">
-                                                    <span class="text-muted">Rating</span>
-                                                    <ul class="fw-medium text-warning list-unstyled mb-0">
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0 text-dark">5.0(30)</li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div><!--end items-->
-                            </div><!--end col-->
-                            
-                            <div class="col-12">
-                                <div class="card property property-list border-0 shadow position-relative overflow-hidden rounded-3">
-                                    <div class="d-lg-flex">
-                                        <div class="property-image md-full position-relative overflow-hidden shadow flex-md-shrink-0 rounded-3 m-2">
-                                            <img src="images/property/4.jpg" class="img-fluid h-100 w-100" alt="">
-                                            <ul class="list-unstyled property-icon">
-                                                <li class=""><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="home" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="heart" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="camera" class="icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="card-body content p-3">
-                                            <a href="property-detail.html" class="title fs-5 text-dark fw-medium">Lot 21 ROYAL OAK DR, Prairieville, LA 70769, USA</a>
-                                            <ul class="list-unstyled mt-3 py-3 border-top border-bottom d-flex align-items-center justify-content-between">
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-arrow-expand-all fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">8000sqf</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-bed fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Beds</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center">
-                                                    <i class="mdi mdi-shower fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Baths</span>
-                                                </li>
-                                            </ul>
-                                            <ul class="list-unstyled d-flex justify-content-between mt-2 mb-0">
-                                                <li class="list-inline-item mb-0">
-                                                    <span class="text-muted">Price</span>
-                                                    <p class="fw-medium mb-0">$5000</p>
-                                                </li>
-                                                <li class="list-inline-item mb-0 text-muted">
-                                                    <span class="text-muted">Rating</span>
-                                                    <ul class="fw-medium text-warning list-unstyled mb-0">
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0 text-dark">5.0(30)</li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div><!--end items-->
-                            </div><!--end col-->
-                            
-                            <div class="col-12">
-                                <div class="card property property-list border-0 shadow position-relative overflow-hidden rounded-3">
-                                    <div class="d-lg-flex">
-                                        <div class="property-image md-full position-relative overflow-hidden shadow flex-md-shrink-0 rounded-3 m-2">
-                                            <img src="images/property/5.jpg" class="img-fluid h-100 w-100" alt="">
-                                            <ul class="list-unstyled property-icon">
-                                                <li class=""><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="home" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="heart" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="camera" class="icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="card-body content p-3">
-                                            <a href="property-detail.html" class="title fs-5 text-dark fw-medium">710 BOYD DR, Unit #1102, Baton Rouge, LA 70808, USA</a>
-                                            <ul class="list-unstyled mt-3 py-3 border-top border-bottom d-flex align-items-center justify-content-between">
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-arrow-expand-all fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">8000sqf</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-bed fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Beds</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center">
-                                                    <i class="mdi mdi-shower fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Baths</span>
-                                                </li>
-                                            </ul>
-                                            <ul class="list-unstyled d-flex justify-content-between mt-2 mb-0">
-                                                <li class="list-inline-item mb-0">
-                                                    <span class="text-muted">Price</span>
-                                                    <p class="fw-medium mb-0">$5000</p>
-                                                </li>
-                                                <li class="list-inline-item mb-0 text-muted">
-                                                    <span class="text-muted">Rating</span>
-                                                    <ul class="fw-medium text-warning list-unstyled mb-0">
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0 text-dark">5.0(30)</li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div><!--end items-->
-                            </div><!--end col-->
-                            
-                            <div class="col-12">
-                                <div class="card property property-list border-0 shadow position-relative overflow-hidden rounded-3">
-                                    <div class="d-lg-flex">
-                                        <div class="property-image md-full position-relative overflow-hidden shadow flex-md-shrink-0 rounded-3 m-2">
-                                            <img src="images/property/6.jpg" class="img-fluid h-100 w-100" alt="">
-                                            <ul class="list-unstyled property-icon">
-                                                <li class=""><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="home" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="heart" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="camera" class="icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="card-body content p-3">
-                                            <a href="property-detail.html" class="title fs-5 text-dark fw-medium">5133 MCLAIN WAY, Baton Rouge, LA 70809, USA</a>
-                                            <ul class="list-unstyled mt-3 py-3 border-top border-bottom d-flex align-items-center justify-content-between">
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-arrow-expand-all fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">8000sqf</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-bed fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Beds</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center">
-                                                    <i class="mdi mdi-shower fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Baths</span>
-                                                </li>
-                                            </ul>
-                                            <ul class="list-unstyled d-flex justify-content-between mt-2 mb-0">
-                                                <li class="list-inline-item mb-0">
-                                                    <span class="text-muted">Price</span>
-                                                    <p class="fw-medium mb-0">$5000</p>
-                                                </li>
-                                                <li class="list-inline-item mb-0 text-muted">
-                                                    <span class="text-muted">Rating</span>
-                                                    <ul class="fw-medium text-warning list-unstyled mb-0">
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0 text-dark">5.0(30)</li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div><!--end items-->
-                            </div><!--end col-->
-
-                            <div class="col-12">
-                                <div class="card property property-list border-0 shadow position-relative overflow-hidden rounded-3">
-                                    <div class="d-lg-flex">
-                                        <div class="property-image md-full position-relative overflow-hidden shadow flex-md-shrink-0 rounded-3 m-2">
-                                            <img src="images/property/7.jpg" class="img-fluid h-100 w-100" alt="">
-                                            <ul class="list-unstyled property-icon">
-                                                <li class=""><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="home" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="heart" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="camera" class="icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="card-body content p-3">
-                                            <a href="property-detail.html" class="title fs-5 text-dark fw-medium">2141 Fiero Street, Baton Rouge, LA 70808</a>
-
-                                            <ul class="list-unstyled mt-3 py-3 border-top border-bottom d-flex align-items-center justify-content-between">
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-arrow-expand-all fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">8000sqf</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-bed fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Beds</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center">
-                                                    <i class="mdi mdi-shower fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Baths</span>
-                                                </li>
-                                            </ul>
-                                            <ul class="list-unstyled d-flex justify-content-between mt-2 mb-0">
-                                                <li class="list-inline-item mb-0">
-                                                    <span class="text-muted">Price</span>
-                                                    <p class="fw-medium mb-0">$5000</p>
-                                                </li>
-                                                <li class="list-inline-item mb-0 text-muted">
-                                                    <span class="text-muted">Rating</span>
-                                                    <ul class="fw-medium text-warning list-unstyled mb-0">
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0 text-dark">5.0(30)</li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div><!--end items-->
-                            </div><!--end col-->
-                            
-                            <div class="col-12">
-                                <div class="card property property-list border-0 shadow position-relative overflow-hidden rounded-3">
-                                    <div class="d-lg-flex">
-                                        <div class="property-image md-full position-relative overflow-hidden shadow flex-md-shrink-0 rounded-3 m-2">
-                                            <img src="images/property/8.jpg" class="img-fluid h-100 w-100" alt="">
-                                            <ul class="list-unstyled property-icon">
-                                                <li class=""><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="home" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="heart" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="camera" class="icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="card-body content p-3">
-                                            <a href="property-detail.html" class="title fs-5 text-dark fw-medium">9714 Inniswold Estates Ave, Baton Rouge, LA 70809</a>
-                                            <ul class="list-unstyled mt-3 py-3 border-top border-bottom d-flex align-items-center justify-content-between">
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-arrow-expand-all fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">8000sqf</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-bed fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Beds</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center">
-                                                    <i class="mdi mdi-shower fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Baths</span>
-                                                </li>
-                                            </ul>
-                                            <ul class="list-unstyled d-flex justify-content-between mt-2 mb-0">
-                                                <li class="list-inline-item mb-0">
-                                                    <span class="text-muted">Price</span>
-                                                    <p class="fw-medium mb-0">$5000</p>
-                                                </li>
-                                                <li class="list-inline-item mb-0 text-muted">
-                                                    <span class="text-muted">Rating</span>
-                                                    <ul class="fw-medium text-warning list-unstyled mb-0">
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0 text-dark">5.0(30)</li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div><!--end items-->
-                            </div><!--end col-->
-                            
-                            <div class="col-12">
-                                <div class="card property property-list border-0 shadow position-relative overflow-hidden rounded-3">
-                                    <div class="d-lg-flex">
-                                        <div class="property-image md-full position-relative overflow-hidden shadow flex-md-shrink-0 rounded-3 m-2">
-                                            <img src="images/property/9.jpg" class="img-fluid h-100 w-100" alt="">
-                                            <ul class="list-unstyled property-icon">
-                                                <li class=""><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="home" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="heart" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="camera" class="icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="card-body content p-3">
-                                            <a href="property-detail.html" class="title fs-5 text-dark fw-medium">1433 Beckenham Dr, Baton Rouge, LA 70808, USA</a>
-                                            <ul class="list-unstyled mt-3 py-3 border-top border-bottom d-flex align-items-center justify-content-between">
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-arrow-expand-all fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">8000sqf</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-bed fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Beds</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center">
-                                                    <i class="mdi mdi-shower fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Baths</span>
-                                                </li>
-                                            </ul>
-                                            <ul class="list-unstyled d-flex justify-content-between mt-2 mb-0">
-                                                <li class="list-inline-item mb-0">
-                                                    <span class="text-muted">Price</span>
-                                                    <p class="fw-medium mb-0">$5000</p>
-                                                </li>
-                                                <li class="list-inline-item mb-0 text-muted">
-                                                    <span class="text-muted">Rating</span>
-                                                    <ul class="fw-medium text-warning list-unstyled mb-0">
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0 text-dark">5.0(30)</li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div><!--end items-->
-                            </div><!--end col-->
-                            
-                            <div class="col-12">
-                                <div class="card property property-list border-0 shadow position-relative overflow-hidden rounded-3">
-                                    <div class="d-lg-flex">
-                                        <div class="property-image md-full position-relative overflow-hidden shadow flex-md-shrink-0 rounded-3 m-2">
-                                            <img src="images/property/10.jpg" class="img-fluid h-100 w-100" alt="">
-                                            <ul class="list-unstyled property-icon">
-                                                <li class=""><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="home" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="heart" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="camera" class="icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="card-body content p-3">
-                                            <a href="property-detail.html" class="title fs-5 text-dark fw-medium">1574 Sharlo Ave, Baton Rouge, LA 70820, USA</a>
-                                            <ul class="list-unstyled mt-3 py-3 border-top border-bottom d-flex align-items-center justify-content-between">
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-arrow-expand-all fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">8000sqf</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-bed fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Beds</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center">
-                                                    <i class="mdi mdi-shower fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Baths</span>
-                                                </li>
-                                            </ul>
-                                            <ul class="list-unstyled d-flex justify-content-between mt-2 mb-0">
-                                                <li class="list-inline-item mb-0">
-                                                    <span class="text-muted">Price</span>
-                                                    <p class="fw-medium mb-0">$5000</p>
-                                                </li>
-                                                <li class="list-inline-item mb-0 text-muted">
-                                                    <span class="text-muted">Rating</span>
-                                                    <ul class="fw-medium text-warning list-unstyled mb-0">
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0 text-dark">5.0(30)</li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div><!--end items-->
-                            </div><!--end col-->
-                            
-                            <div class="col-12">
-                                <div class="card property property-list border-0 shadow position-relative overflow-hidden rounded-3">
-                                    <div class="d-lg-flex">
-                                        <div class="property-image md-full position-relative overflow-hidden shadow flex-md-shrink-0 rounded-3 m-2">
-                                            <img src="images/property/11.jpg" class="img-fluid h-100 w-100" alt="">
-                                            <ul class="list-unstyled property-icon">
-                                                <li class=""><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="home" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="heart" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="camera" class="icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="card-body content p-3">
-                                            <a href="property-detail.html" class="title fs-5 text-dark fw-medium">2528 BOCAGE LAKE DR, Baton Rouge, LA 70809, USA</a>
-                                            <ul class="list-unstyled mt-3 py-3 border-top border-bottom d-flex align-items-center justify-content-between">
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-arrow-expand-all fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">8000sqf</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-bed fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Beds</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center">
-                                                    <i class="mdi mdi-shower fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Baths</span>
-                                                </li>
-                                            </ul>
-                                            <ul class="list-unstyled d-flex justify-content-between mt-2 mb-0">
-                                                <li class="list-inline-item mb-0">
-                                                    <span class="text-muted">Price</span>
-                                                    <p class="fw-medium mb-0">$5000</p>
-                                                </li>
-                                                <li class="list-inline-item mb-0 text-muted">
-                                                    <span class="text-muted">Rating</span>
-                                                    <ul class="fw-medium text-warning list-unstyled mb-0">
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0 text-dark">5.0(30)</li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div><!--end items-->
-                            </div><!--end col-->
-                            
-                            <div class="col-12">
-                                <div class="card property property-list border-0 shadow position-relative overflow-hidden rounded-3">
-                                    <div class="d-lg-flex">
-                                        <div class="property-image md-full position-relative overflow-hidden shadow flex-md-shrink-0 rounded-3 m-2">
-                                            <img src="images/property/12.jpg" class="img-fluid h-100 w-100" alt="">
-                                            <ul class="list-unstyled property-icon">
-                                                <li class=""><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="home" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="heart" class="icons"></i></a></li>
-                                                <li class="mt-1"><a href="javascript:void(0)" class="btn btn-sm btn-icon btn-pills btn-primary"><i data-feather="camera" class="icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="card-body content p-3">
-                                            <a href="property-detail.html" class="title fs-5 text-dark fw-medium">1533 NICHOLSON DR, Baton Rouge, LA 70802, USA</a>
-                                            <ul class="list-unstyled mt-3 py-3 border-top border-bottom d-flex align-items-center justify-content-between">
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-arrow-expand-all fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">8000sqf</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-bed fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Beds</span>
-                                                </li>
-                
-                                                <li class="d-flex align-items-center">
-                                                    <i class="mdi mdi-shower fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">4 Baths</span>
-                                                </li>
-                                            </ul>
-                                            <ul class="list-unstyled d-flex justify-content-between mt-2 mb-0">
-                                                <li class="list-inline-item mb-0">
-                                                    <span class="text-muted">Price</span>
-                                                    <p class="fw-medium mb-0">$5000</p>
-                                                </li>
-                                                <li class="list-inline-item mb-0 text-muted">
-                                                    <span class="text-muted">Rating</span>
-                                                    <ul class="fw-medium text-warning list-unstyled mb-0">
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                                        <li class="list-inline-item mb-0 text-dark">5.0(30)</li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div><!--end items-->
-                            </div><!--end col-->
+                            {% endfor %}
                         </div><!--end row-->
+                        
+                        <!-- Pagination  -->
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center pt-4">
+                                {% if current_page > 1 %}
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ url_for('utils.search', page=current_page-1, **query_params) }}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                {% endif %}
+                                <!-- Pagination Numbers -->
+                                {% for page in range(1, total_pages+1) %}
+                                <li class="page-item {{ 'active' if page == current_page else '' }}">
+                                    <a class="page-link" href="{{ url_for('utils.search', page=page, **query_params) }}">{{ page }}</a>
+                                </li>
+                                {% endfor %}
+                                {% if current_page < total_pages %}
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ url_for('utils.search', page=current_page+1, **query_params) }}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </nav>           
+                        <!-- End of pagination -->
 
-                        <div class="row">
-                            <div class="col-12 mt-4 pt-2">
-                                <ul class="pagination justify-content-center mb-0">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true"><i class="mdi mdi-chevron-left fs-6"></i></span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true"><i class="mdi mdi-chevron-right fs-6"></i></span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div><!--end col-->
-                        </div><!--end row-->
-                    </div><!--end col-->
+                    </div><!--end col-->                    
                 </div><!--end row-->
             </div><!--end container-->
         </section><!--end section-->
+
         <!-- End -->
 
         <!-- Footer Start -->

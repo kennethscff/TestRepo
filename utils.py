@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify, session, render_template
 from flask_bcrypt import Bcrypt
+from math import ceil
 
 from models import Location
 
@@ -27,13 +28,148 @@ def facets():
 
 @utils.route('/search', methods=['GET'])
 def search():
-    requested_location = request.args.get('location', '')
-    current_location = request.args.get('currentLocation', '')
-    parking = request.args.get('parking', '')
-    garden = request.args.get('garden', '')
-    access = request.args.get('accessible', '')
-    min_bedroom = request.args.get('min_bedroom', '')
-    max_price = request.args.get('max_price', '')
-    category = request.args.get('category', '')
+    # Gather facet data from request
+    facet_data = {
+        'location': request.args.get('location', ''),
+        'current_location': request.args.get('currentLocation', ''),
+        'parking': request.args.get('parking', ''),
+        'garden': request.args.get('garden', ''),
+        'accessible': request.args.get('accessible', ''),
+        'min_bedroom': request.args.get('min_bedroom', ''),
+        'max_price': request.args.get('max_price', ''),
+        'category': request.args.get('category', '')
+    }
 
-    return render_template('search_results.html', location=requested_location, current_location=current_location, parking=parking, garden=garden, accessible=access, min_bedroom=min_bedroom, max_price=max_price, category=category)
+    # Dummy data for results
+    results = [
+        {
+            'title': 'Modern Apartment Downtown',
+            'location': '123 Main St, Anytown, AT 12345',
+            'price': '1200',
+            'bedrooms': 2,
+            'bathrooms': 2,
+            'square_feet': '850sqft',
+            'match': 4,
+            'image_url': './static/images/property/1.jpg'
+        },
+        {
+            'title': 'Modern Apartment Downtown',
+            'location': '123 Main St, Anytown, AT 12345',
+            'price': '1200',
+            'bedrooms': 2,
+            'bathrooms': 2,
+            'square_feet': '850sqft',
+            'match': 4,
+            'image_url': './static/images/property/1.jpg'
+        },
+        {
+            'title': 'Modern Apartment Downtown',
+            'location': '123 Main St, Anytown, AT 12345',
+            'price': '1200',
+            'bedrooms': 2,
+            'bathrooms': 2,
+            'square_feet': '850sqft',
+            'match': 4,
+            'image_url': './static/images/property/1.jpg'
+        },
+        {
+            'title': 'Modern Apartment Downtown',
+            'location': '123 Main St, Anytown, AT 12345',
+            'price': '1200',
+            'bedrooms': 2,
+            'bathrooms': 2,
+            'square_feet': '850sqft',
+            'match': 4,
+            'image_url': './static/images/property/1.jpg'
+        },
+        {
+            'title': 'Modern Apartment Downtown',
+            'location': '123 Main St, Anytown, AT 12345',
+            'price': '1200',
+            'bedrooms': 2,
+            'bathrooms': 2,
+            'square_feet': '850sqft',
+            'match': 4,
+            'image_url': './static/images/property/1.jpg'
+        },
+        {
+            'title': 'Modern Apartment Downtown',
+            'location': '123 Main St, Anytown, AT 12345',
+            'price': '1200',
+            'bedrooms': 2,
+            'bathrooms': 2,
+            'square_feet': '850sqft',
+            'match': 4,
+            'image_url': './static/images/property/1.jpg'
+        },
+        {
+            'title': 'Modern Apartment Downtown',
+            'location': '123 Main St, Anytown, AT 12345',
+            'price': '1200',
+            'bedrooms': 2,
+            'bathrooms': 2,
+            'square_feet': '850sqft',
+            'match': 4,
+            'image_url': './static/images/property/1.jpg'
+        },
+        {
+            'title': 'Modern Apartment Downtown',
+            'location': '123 Main St, Anytown, AT 12345',
+            'price': '1200',
+            'bedrooms': 2,
+            'bathrooms': 2,
+            'square_feet': '850sqft',
+            'match': 4,
+            'image_url': './static/images/property/1.jpg'
+        },
+        {
+            'title': 'Modern Apartment Downtown',
+            'location': '123 Main St, Anytown, AT 12345',
+            'price': '1200',
+            'bedrooms': 2,
+            'bathrooms': 2,
+            'square_feet': '850sqft',
+            'match': 4,
+            'image_url': './static/images/property/1.jpg'
+        },
+        {
+            'title': 'Modern Apartment Downtown',
+            'location': '123 Main St, Anytown, AT 12345',
+            'price': '1200',
+            'bedrooms': 2,
+            'bathrooms': 2,
+            'square_feet': '850sqft',
+            'match': 4,
+            'image_url': './static/images/property/1.jpg'
+        },
+        {
+            'title': 'Modern Apartment Downtown',
+            'location': '123 Main St, Anytown, AT 12345',
+            'price': '1200',
+            'bedrooms': 2,
+            'bathrooms': 2,
+            'square_feet': '850sqft',
+            'match': 4,
+            'image_url': './static/images/property/1.jpg'
+        },
+    ]
+
+    # Pagination parameters
+    page = request.args.get('page', 1, type=int)
+    per_page = 10  # Number of items per page
+    total_results = len(results)  # Total number of results available
+    total_pages = ceil(total_results / per_page)  # Calculate total number of pages
+
+    # Calculate start and end indices for the current page
+    start = (page - 1) * per_page
+    end = start + per_page
+
+    # Slice the results array to get only the items for the current page
+    page_results = results[start:end]
+
+    # Maintain original query parameters for pagination links
+    query_params = request.args.to_dict()
+    query_params.pop('page', None)  # Remove the page parameter if present
+
+    # Render the template, passing the necessary data
+    return render_template('search_results.html', facet_data=facet_data, results=page_results, current_page=page, total_pages=total_pages, query_params=query_params)

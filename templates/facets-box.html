@@ -7,14 +7,14 @@
 <!-- Desired Location -->
 <h6 class="mb-0">Desired Location</h6>
 <div class="typeahead-wrapper mt-2">
-    <input type="text" class="form-control rounded-3 border" name="location" id="desired-keyword" placeholder="Birmingham, Leeds, etc" oninput="fetchTypeahead(this.value, 'desired-keyword', 'desired-typeahead-suggestions')" value="{{ location }}">
+    <input type="text" class="form-control rounded-3 border" name="location" id="desired-keyword" placeholder="Glasgow, Manchester, etc" oninput="fetchTypeahead(this.value, 'desired-keyword', 'desired-typeahead-suggestions')" value="{{ facet_data.location }}">
     <div id="desired-typeahead-suggestions" class="suggestions-container"></div>
 </div>
 
 <!-- Current Location -->
 <h6 class="mb-0">Current Location (We will use this to find suitable swaps)</h6>
 <div class="typeahead-wrapper mt-2">
-    <input type="text" class="form-control rounded-3 border" name="currentLocation" id="current-keyword" placeholder="Birmingham, Leeds, etc" oninput="fetchTypeahead(this.value, 'current-keyword', 'current-typeahead-suggestions')" value="{{ current_location }}">
+    <input type="text" class="form-control rounded-3 border" name="currentLocation" id="current-keyword" placeholder="Birmingham, Leeds, etc" oninput="fetchTypeahead(this.value, 'current-keyword', 'current-typeahead-suggestions')" value="{{ facet_data.current_location }}">
     <div id="current-typeahead-suggestions" class="suggestions-container"></div>
 </div>
 
@@ -24,15 +24,15 @@
         <h6 class="mb-0 mt-4">Other Filters</h6>
         <div class="d-flex flex-wrap">
             <div class="form-check me-3">
-                <input class="form-check-input" type="checkbox" name="garden" id="garden" value="1" {{ 'checked' if garden == '1' else '' }}>
+                <input class="form-check-input" type="checkbox" name="garden" id="garden" value="1" {{ 'checked' if facet_data.garden == '1' else '' }}>
                 <label class="form-check-label" for="garden">Garden</label>
             </div>
             <div class="form-check me-3">
-                <input class="form-check-input" type="checkbox" name="parking" id="parking" value="1" {{ 'checked' if parking == '1' else '' }}>
+                <input class="form-check-input" type="checkbox" name="parking" id="parking" value="1" {{ 'checked' if facet_data.parking == '1' else '' }}>
                 <label class="form-check-label" for="parking">Parking</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="accessible" id="accessible" value="1" {{ 'checked' if accessible == '1' else '' }}>
+                <input class="form-check-input" type="checkbox" name="accessible" id="accessible" value="1" {{ 'checked' if facet_data.accessible == '1' else '' }}>
                 <label class="form-check-label" for="accessible">Accessible</label>
             </div>
         </div>
@@ -41,35 +41,35 @@
         <!-- Categories -->
         <h6 class="mb-0 mt-4">Categories</h6>
         <select class="form-select" name="category" id="procategories">
-            <option value="any" {{ 'selected' if category == 'any' else '' }}>Any</option>
-            <option value="apartment" {{ 'selected' if category == 'apartment' else '' }}>Apartment</option>
-            <option value="detached" {{ 'selected' if category == 'detached' else '' }}>Detached</option>
-            <option value="semi-detached" {{ 'selected' if category == 'semi-detached' else '' }}>Semi-Detached</option>
-            <option value="townhouse" {{ 'selected' if category == 'townhouse' else '' }}>Townhouse</option>
-            <option value="other" {{ 'selected' if category == 'other' else '' }}>Other</option>
+            <option value="any" {{ 'selected' if facet_data.category == 'any' else '' }}>Any</option>
+            <option value="apartment" {{ 'selected' if facet_data.category == 'apartment' else '' }}>Apartment</option>
+            <option value="detached" {{ 'selected' if facet_data.category == 'detached' else '' }}>Detached</option>
+            <option value="semi-detached" {{ 'selected' if facet_data.category == 'semi-detached' else '' }}>Semi-Detached</option>
+            <option value="townhouse" {{ 'selected' if facet_data.category == 'townhouse' else '' }}>Townhouse</option>
+            <option value="other" {{ 'selected' if facet_data.category == 'other' else '' }}>Other</option>
         </select>
 
         <!-- Minimum Bedroom -->
         <h6 class="mb-0 mt-4">Minimum Bedroom</h6>
         <select class="form-select" name="min_bedroom" id="prolocation">
-            <option {{ 'selected' if min_bedroom == 'Any' else '' }}>Any</option>
-            <option value="0" {{ 'selected' if min_bedroom == '0' else '' }}>Studio</option>
-            <option value="1" {{ 'selected' if min_bedroom == '1' else '' }}>1+</option>
-            <option value="2" {{ 'selected' if min_bedroom == '2' else '' }}>2+</option>
-            <option value="3" {{ 'selected' if min_bedroom == '3' else '' }}>3+</option>
-            <option value="4" {{ 'selected' if min_bedroom == '4' else '' }}>4+</option>
-            <option value="5" {{ 'selected' if min_bedroom == '5' else '' }}>5+</option>
+            <option {{ 'selected' if facet_data.min_bedroom == 'Any' else '' }}>Any</option>
+            <option value="0" {{ 'selected' if facet_data.min_bedroom == '0' else '' }}>Studio</option>
+            <option value="1" {{ 'selected' if facet_data.min_bedroom == '1' else '' }}>1+</option>
+            <option value="2" {{ 'selected' if facet_data.min_bedroom == '2' else '' }}>2+</option>
+            <option value="3" {{ 'selected' if facet_data.min_bedroom == '3' else '' }}>3+</option>
+            <option value="4" {{ 'selected' if facet_data.min_bedroom == '4' else '' }}>4+</option>
+            <option value="5" {{ 'selected' if facet_data.min_bedroom == '5' else '' }}>5+</option>
         </select>
 
         <!-- Maximum Rent -->
         <h6 class="mb-0 mt-4">Maximum Rent</h6>
         <select class="form-select" name="max_price" id="prolocation">
-            <option {{ 'selected' if max_price == 'Any' else '' }}>Any</option>
-            <option value="200" {{ 'selected' if max_price == '200' else '' }}>0-200</option>
-            <option value="400" {{ 'selected' if max_price == '400' else '' }}>200-400</option>
-            <option value="600" {{ 'selected' if max_price == '600' else '' }}>400-600</option>
-            <option value="800" {{ 'selected' if max_price == '800' else '' }}>600-800</option>
-            <option value="Any" {{ 'selected' if max_price == 'Any' else '' }}>800+</option>
+            <option {{ 'selected' if facet_data.max_price == 'Any' else '' }}>Any</option>
+            <option value="200" {{ 'selected' if facet_data.max_price == '200' else '' }}>0-200</option>
+            <option value="400" {{ 'selected' if facet_data.max_price == '400' else '' }}>200-400</option>
+            <option value="600" {{ 'selected' if facet_data.max_price == '600' else '' }}>400-600</option>
+            <option value="800" {{ 'selected' if facet_data.max_price == '800' else '' }}>600-800</option>
+            <option value="Any" {{ 'selected' if facet_data.max_price == 'Any' else '' }}>800+</option>
         </select>
 
         <button type="submit" class="btn btn-primary w-100 mt-4">Find properties</button>

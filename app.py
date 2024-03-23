@@ -16,7 +16,7 @@ def create_app():
     app = Flask(__name__)
     CORS(app)
     
-    app.secret_key = os.urandom(24)
+    app.secret_key = '8f8ff0ce8a46639077cb6bf516aa2f8bdc245d42f73a7cbf'
 
     app.config['CORS_HEADERS'] = 'Content-Type'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://admin:kbcbhbjb@socialx.cubywqkqujxb.eu-west-2.rds.amazonaws.com/socialx'
