@@ -10,11 +10,6 @@ matches = Blueprint('matches', __name__)
 def about():
     return render_template('aboutus.html')
 
-@matches.route('/search', methods=['GET'])
-def search():
-    print(request.args)
-    return render_template('facets.html')
-
 @matches.route('/direct_swap', methods=['GET'])
 def get_direct_swap():
     tenant_id = request.args.get('id')

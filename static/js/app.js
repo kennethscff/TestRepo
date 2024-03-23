@@ -283,19 +283,4 @@ try {
     }
 } catch (error) {
     
-}
-
-$(document).ready(function() {
-    $('#search').click(function(event) {
-        event.preventDefault(); // Prevent default form submission
-
-        // Get values from form fields  
-        let location = $('#job-keyword').val();
-
-        // Construct the search URL
-        let searchUrl = '/search?location=' + encodeURIComponent(location)
-
-        // Redirect the user to the search URL
-        window.location.href = searchUrl;
-    });
-});
+};

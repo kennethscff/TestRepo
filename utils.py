@@ -20,4 +20,13 @@ def typeahead():
 
 @utils.route('/facets', methods=['GET'])
 def facets():
-    return render_template('facets.html')
+    requested_location = request.args['location']
+    if not requested_location:
+        requested_location = 'the UK'
+    else:
+        requested_location = requested_location.title()
+    return render_template('facets.html', location = requested_location)
+
+@utils.route('/search', methods=['GET'])
+def search():
+    return render_template('search_results.html')

@@ -7,17 +7,21 @@ bcrypt = Bcrypt()
 class Typeahead(db.Model):
     __tablename__ = 'typeahead'
     id = db.Column(db.Integer, primary_key=True)
+    os_id = db.Column(db.String(50))
     name1 = db.Column(db.String(50))
+    name1_lang = db.Column(db.String(10))
+    name2 = db.Column(db.String(50))
+    name2_lang = db.Column(db.String(10))
     lat = db.Column(db.Numeric(10, 7))
-    lng = db.Column(db.Numeric(10, 7))
+    lon = db.Column(db.Numeric(10, 7))
     label = db.Column(db.String(50))
     local_type_id = db.Column(db.Integer)
     county_unitary_id = db.Column(db.Integer)
+    region_id = db.Column(db.Integer)
+    country_id = db.Column(db.Integer)
     slug = db.Column(db.String(50))
     redirect_slug = db.Column(db.String(50))
-    region = db.Column(db.Integer)
-    country = db.Column(db.Integer)
-
+    
 class Tenant(db.Model):
     __tablename__ = 'tenant'
     TenantID = db.Column(db.Integer, primary_key=True)

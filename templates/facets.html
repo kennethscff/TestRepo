@@ -1,9 +1,8 @@
 <!doctype html>
 <html lang="en">
-	{% include 'head.html' %}
-
-	<body>
-        <!-- Navbar STart -->
+    {% include 'head.html' %}
+    <body>
+        <!-- Navbar Start -->
         {% include 'header.html' %}
         <!-- Navbar End -->
 
@@ -11,112 +10,15 @@
         <section class="section">
             <div class="container">
                 <div class="row g-4">
-                    <div class="col-lg-12 col-md-12 col-12 p-5">
-                        <div class="card bg-white p-4 rounded-3 shadow sticky-bar">
-                            <!-- SEARCH -->
-                            <div>
-                                <h6 class="mb-0">Desired Location</h6>
-
-                                <div class="search-bar mt-2">
-                                    <div id="itemSearch2" class="menu-search mb-0">
-                                        <form role="search" method="get" id="searchItemform2" class="searchform">
-                                            <input type="text" class="form-control rounded-3 border" name="s" id="searchItem2" placeholder="Search...">
-                                            <input type="submit" id="searchItemsubmit2" value="Search">
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- SEARCH -->
-
-                            <!-- TYPE -->
-                            <div class="mt-4">
-                                <h6 class="mb-0">Optional Filters</h6>
-
-                                <ul class="list-unstyled mt-2 mb-0">
-                                    <li class="list-inline-item mb-0 me-2">
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                            <div class="form-check mb-0">
-                                                <input class="form-check-input" checked type="checkbox" id="garden">
-                                                <label class="form-check-label" for="garden">Garden</label>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="list-inline-item mb-0 me-2">
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                            <div class="form-check mb-0">
-                                                <input class="form-check-input" checked type="checkbox" id="parking">
-                                                <label class="form-check-label" for="parking">Parking</label>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="list-inline-item mb-0 me-2">
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                            <div class="form-check mb-0">
-                                                <input class="form-check-input" checked type="checkbox" id="accessible">
-                                                <label class="form-check-label" for="accessible">Accessible</label>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- TYPE -->
-
-                            <!-- Categories -->
-                            <div class="mt-4">
-                                <h6 class="mb-0">Categories</h6>
-                                <label class="visually-hidden" for="procategories">Propety Type</label>
-                                <select class="form-select form-control border mt-2" id="procategories" aria-label="Default select example">
-                                    <option value="re">Any</option>
-                                    <option value="la">Apartment</option>
-                                    <option value="co">Detached</option>
-                                    <option value="ind">Semi-Detached</option>
-                                    <option value="inv">Townhouse</option>
-                                    <option value="inv">Other</option>
-                                </select>
-                            </div>
-                            <!-- Categories -->
-
-                            <!-- Minimum Bedroom -->
-                            <div class="mt-4">
-                                <h6 class="mb-0">Minimum Bedroom</h6>
-                                <select class="form-select form-control border mt-2" id="prolocation" aria-label="Default select example">
-                                    <option>1+</option>
-                                    <option>2+</option>
-                                    <option>3+</option>
-                                    <option>4+</option>
-                                    <option>5+</option>
-                                </select>
-                            </div>
-                            <!-- Minimum Bedroom -->
-
-
-                            <!-- Maximum Rent -->
-                            <div class="mt-4">
-                                <h6 class="mb-0">Maximum Rent</h6>
-                                <select class="form-select form-control border mt-2" id="prolocation" aria-label="Default select example">
-                                    <option>Any</option>
-                                    <option>0-200</option>
-                                    <option>200-400</option>
-                                    <option>400-600</option>
-                                    <option>600-800</option>
-                                    <option>800+</option>
-                                </select>
-                            </div>
-                            <!-- Maximum Rent -->
-
-                            <div class="mt-4">
-                                <a href="" class="btn btn-primary w-100">Find properties</a>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </section><!--end section-->
+                    <div class="col-lg-12 col-md-12 col-12 px-5 py-5 pt-5 pb-0">
+                        {% include 'facets-box.html' %}
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- End -->
 
-        <!-- Footer End -->
+        <!-- Footer -->
         {% include 'footer.html' %}
         <!-- Footer End -->
 
@@ -125,13 +27,13 @@
         <!-- Back to top -->
 
         <!-- JAVASCRIPTS -->
-	    <script src="./static/js/bootstrap.bundle.min.js"></script>
-        <!-- Tobii -->
+        <script src="./static/js/bootstrap.bundle.min.js"></script>
         <script src="./static/js/tobii.min.js"></script>
-        <!-- Icons -->
         <script src="./static/js/feather.min.js"></script>
-	    <!-- Custom -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 	    <script src="./static/js/plugins.init.js"></script>
 	    <script src="./static/js/app.js"></script>
+        <script src="./static/js/search_results.js"></script>
+        <script src="./static/js/utils.js"></script>
     </body>
 </html>
