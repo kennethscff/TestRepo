@@ -4,8 +4,8 @@ from flask_bcrypt import Bcrypt
 
 bcrypt = Bcrypt()
 
-class Typeahead(db.Model):
-    __tablename__ = 'typeahead'
+class Location(db.Model):
+    __tablename__ = 'location'
     id = db.Column(db.Integer, primary_key=True)
     os_id = db.Column(db.String(50))
     name1 = db.Column(db.String(50))
@@ -30,15 +30,6 @@ class Tenant(db.Model):
 
     # Relationship for desired locations
     desired_locations = db.relationship('DesiredLocation', backref='tenant', lazy=True)
-
-class Location(db.Model):
-    __tablename__ = 'location'
-    LocationID = db.Column(db.Integer, primary_key=True)
-    LocationName = db.Column(db.String(50), nullable=False)
-
-    # Relationship (one Location to many Tenants)
-    tenants = db.relationship('Tenant', backref='location', lazy=True)
-
 class DesiredLocation(db.Model):
     __tablename__ = 'desiredLocation'
     id = db.Column(db.Integer, primary_key=True)

@@ -3,7 +3,7 @@ $(document).ready(function() {
         event.preventDefault(); // Prevent default form submission
 
         // Get values from form fields  
-        let location = $('#job-keyword').val();
+        let location = $('#job-keyword-index').val();
 
         // Construct the search URL
         let searchUrl = '/facets?location=' + encodeURIComponent(location)

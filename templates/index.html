@@ -35,7 +35,7 @@
                         <div class="features-absolute">
                             <div class="tab-content bg-white rounded-3 sm-rounded-0 shadow" id="pills-tabContent">
                                 <div class="card border-0 tab-pane fade show active" id="buy" role="tabpanel" aria-labelledby="swap-homepage">
-                                    <form class="card-body text-start">
+                                    <form class="card-body text-start" action="/facets" method="GET" id="searchForm">
                                         <div class="registration-form text-dark text-start">
                                             <div class="row g-lg-0">
                                                 <div class="col-lg-12 col-md-12 col-12">
@@ -44,23 +44,21 @@
                                                         <div class="filter-search-form position-relative filter-border">
                                                             <div class="typeahead-wrapper">
                                                                 <input
-                                                                  name="name"
-                                                                  type="text"
-                                                                  id="job-keyword"
-                                                                  class="form-control filter-input-box bg-light border-0"
-                                                                  placeholder="Glasgow, Manchester, etc"
-                                                                  oninput="fetchTypeahead(this.value)"
-                                                                >
-                                                                <div id="typeahead-suggestions" class="suggestions-container"></div>
+                                                                    name="location"
+                                                                    type="text"
+                                                                    id="job-keyword-index"
+                                                                    class="form-control filter-input-box bg-light border-0"
+                                                                    placeholder="Glasgow, Manchester, etc"
+                                                                    oninput="fetchTypeahead(this.value, 'job-keyword-index', 'typeahead-suggestions-index')"
+                                                                    >
+                                                                <div id="typeahead-suggestions-index" class="suggestions-container"></div>
                                                               </div>
                                                         </div>
                                                     </div>
                                                 </div><!--end col-->
                                                 </div>
-
-        
                                                 <div class="col-lg-3 col-md-3 col-12">
-                                                    <button type="button" id="search" class="btn btn-primary searchbtn w-100" style="height: 48px;">Search</button>
+                                                    <button type="submit" id="search" class="btn btn-primary searchbtn w-100" style="height: 48px;">Search</button>
                                                 </div>
                                             </div><!--end row-->
                                         </div>

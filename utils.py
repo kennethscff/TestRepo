@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, session, render_template
 from flask_bcrypt import Bcrypt
 
-from models import Typeahead
+from models import Location
 
 utils = Blueprint('utils', __name__)
 bcrypt = Bcrypt()  
@@ -12,7 +12,7 @@ def typeahead():
     if search_term:
         # Using the `ilike` function to perform a case-insensitive partial match
         # and limiting the results to 5
-        typeahead_results = Typeahead.query.filter(Typeahead.label.ilike(f"{search_term}%")).limit(5).all()
+        typeahead_results = Location.query.filter(Location.label.ilike(f"{search_term}%")).limit(5).all()
         # Formatting results as a list of dictionaries to return as JSON
         results = [{'id': location.id, 'name': location.name1} for location in typeahead_results]
         return jsonify(results)
@@ -21,9 +21,7 @@ def typeahead():
 @utils.route('/facets', methods=['GET'])
 def facets():
     requested_location = request.args['location']
-    if not requested_location:
-        requested_location = 'the UK'
-    else:
+    if requested_location:
         requested_location = requested_location.title()
     return render_template('facets.html', location = requested_location)
 

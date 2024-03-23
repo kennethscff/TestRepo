@@ -3,13 +3,22 @@
         <div class="mt-2 mb-4">
             <h5>Searching for homes in {{ location }}</h5>
         </div>
-        
-       <!-- Typeahead for Current Location -->
-        <h6 class="mb-0">Current Location (We will use this to find suitable swaps)</h6>
-        <div class="typeahead-wrapper mt-2">
-            <input type="text" class="form-control rounded-3 border" name="currentLocation" id="job-keyword" placeholder="Birmingham, Leeds, etc" oninput="fetchTypeahead(this.value)" value="{{ current_location }}">
-            <div id="typeahead-suggestions" class="suggestions-container"></div>
-        </div>
+
+<!-- Desired Location -->
+<h6 class="mb-0">Desired Location</h6>
+<div class="typeahead-wrapper mt-2">
+    <input type="text" class="form-control rounded-3 border" name="location" id="desired-keyword" placeholder="Birmingham, Leeds, etc" oninput="fetchTypeahead(this.value, 'desired-keyword', 'desired-typeahead-suggestions')" value="{{ location }}">
+    <div id="desired-typeahead-suggestions" class="suggestions-container"></div>
+</div>
+
+<!-- Current Location -->
+<h6 class="mb-0">Current Location (We will use this to find suitable swaps)</h6>
+<div class="typeahead-wrapper mt-2">
+    <input type="text" class="form-control rounded-3 border" name="currentLocation" id="current-keyword" placeholder="Birmingham, Leeds, etc" oninput="fetchTypeahead(this.value, 'current-keyword', 'current-typeahead-suggestions')" value="{{ current_location }}">
+    <div id="current-typeahead-suggestions" class="suggestions-container"></div>
+</div>
+
+
         
         <!-- Other Filters -->
         <h6 class="mb-0 mt-4">Other Filters</h6>
@@ -62,9 +71,6 @@
             <option value="800" {{ 'selected' if max_price == '800' else '' }}>600-800</option>
             <option value="Any" {{ 'selected' if max_price == 'Any' else '' }}>800+</option>
         </select>
-
-        <!-- Hidden field for location -->
-        <input type="hidden" name="location" value="{{ location }}">
 
         <button type="submit" class="btn btn-primary w-100 mt-4">Find properties</button>
     </form>

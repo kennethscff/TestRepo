@@ -1,43 +1,50 @@
-function fetchTypeahead(searchTerm) {
-    const suggestionsContainer = document.getElementById('typeahead-suggestions');
-    
-    // Clear previous suggestions
-    suggestionsContainer.innerHTML = '';
-    
-    if (searchTerm.length < 3) {
-      suggestionsContainer.style.display = 'none'; // Hide suggestions if search term is too short
-      return;
-    }
-    
-    fetch(`/typeahead?term=${encodeURIComponent(searchTerm)}`)
-      .then(response => response.json())
-      .then(data => {
-        if (data.length > 0) {
-          // Use the data to create suggestions
-          data.forEach(item => {
-            if (Array.from(suggestionsContainer.children).some(child => child.textContent === item.name)) {
-                return;
-            }
-            const suggestionElement = document.createElement('div');
-            suggestionElement.className = 'suggestion';
-            suggestionElement.textContent = item.name;
-            suggestionElement.onclick = function() {
-              // Fill the input when a suggestion is clicked
-              document.getElementById('job-keyword').value = item.name;
-              // Clear suggestions
-              suggestionsContainer.innerHTML = '';
-              suggestionsContainer.style.display = 'none'; // Hide suggestions after selection
-            };
-            suggestionsContainer.appendChild(suggestionElement);
-          });
-          suggestionsContainer.style.display = 'block'; // Show suggestions
-        } else {
-          suggestionsContainer.style.display = 'none'; // Hide suggestions if no data
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching typeahead data:', error);
-        suggestionsContainer.style.display = 'none'; // Hide suggestions on error
-      });
-  }
+function fetchTypeahead(searchTerm, inputId, suggestionsContainerId) {
+  const inputElement = document.getElementById(inputId);
+  const suggestionsContainer = document.getElementById(suggestionsContainerId);
   
+  // Clear previous suggestions
+  suggestionsContainer.innerHTML = '';
+
+  if (searchTerm.length < 3) {
+      suggestionsContainer.style.display = 'none';
+      return;
+  }
+
+  fetch(`/typeahead?term=${encodeURIComponent(searchTerm)}`)
+    .then(response => response.json())
+    .then(data => {
+      suggestionsContainer.innerHTML = ''; // Clear previous suggestions
+      if (data.length > 0) {
+          data.forEach(item => {
+              const suggestionElement = document.createElement('div');
+              suggestionElement.className = 'suggestion';
+              suggestionElement.textContent = item.name;
+              suggestionElement.onclick = function() {
+                  inputElement.value = item.name;
+                  suggestionsContainer.innerHTML = '';
+                  suggestionsContainer.style.display = 'none';
+              };
+              suggestionsContainer.appendChild(suggestionElement);
+          });
+          suggestionsContainer.style.display = 'block';
+      } else {
+          suggestionsContainer.style.display = 'none';
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching typeahead data:', error);
+      suggestionsContainer.style.display = 'none';
+    });
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById("searchForm").addEventListener("submit", function(event) {
+      var locationValue = document.getElementById("job-keyword-index").value;
+      console.log("Location Value at Submission:", locationValue);
+      if (!locationValue) {
+          console.warn("Location value is empty or undefined at submission.");
+          event.preventDefault(); // Prevent form submission if location is undefined
+      }
+  });
+});
