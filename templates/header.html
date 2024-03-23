@@ -21,14 +21,14 @@
             {% if not session.get('user_id') %}
             <!-- User is not logged in, show Log in/Register -->
             <li class="list-inline-item ps-1 mb-0">
-                <a href="/login" class="btn btn-md btn-icon btn-pills btn-primary">
+                <a href="/login" class="btn btn-primary">
                     <i data-feather="user" class="icons"></i> Login
                 </a>
             </li>
             {% else %}
             <!-- User is logged in, show Log out -->
             <li class="list-inline-item ps-1 mb-0">
-                <a href="/logout" class="btn btn-sm btn-icon btn-pills btn-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <a href="/logout" class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i data-feather="log-out" class="icons"></i> Log out
                 </a>
                 <form id="logout-form" action="/logout" method="POST" style="display: none;">

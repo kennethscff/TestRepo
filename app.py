@@ -47,6 +47,10 @@ def create_app():
     def hello_world():
         return render_template('index.html')
     
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return render_template('404.html'), 404
+    
     @app.route('/api-docs') 
     def get_swagger_spec():
         with open('static/swagger/swagger.json') as file_handler:

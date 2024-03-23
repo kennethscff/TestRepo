@@ -15,6 +15,9 @@ function fetchTypeahead(searchTerm) {
         if (data.length > 0) {
           // Use the data to create suggestions
           data.forEach(item => {
+            if (Array.from(suggestionsContainer.children).some(child => child.textContent === item.name)) {
+                return;
+            }
             const suggestionElement = document.createElement('div');
             suggestionElement.className = 'suggestion';
             suggestionElement.textContent = item.name;
