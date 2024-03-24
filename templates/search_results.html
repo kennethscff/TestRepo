@@ -33,11 +33,11 @@
                                             <img src="{{ result.image_url }}" class="img-fluid h-100 w-100" alt="">
                                         </div>
                                         <div class="card-body content p-3">
-                                            <a href="property-detail.html" class="title fs-5 text-dark fw-medium">{{ result.title }}</a>
+                                            <a href="/property/{{ result.id }}" class="title fs-5 text-dark fw-medium">{{ result.title }}</a>
                                             <ul class="list-unstyled mt-3 py-3 border-top border-bottom d-flex align-items-center justify-content-between">
                                                 <li class="d-flex align-items-center me-3">
-                                                    <i class="mdi mdi-arrow-expand-all fs-5 me-2 text-primary"></i>
-                                                    <span class="text-muted">{{ result.square_feet }}sqf</span>
+                                                    <i class="mdi mdi-map-marker-radius fs-5 me-2 text-primary"></i>
+                                                    <span class="text-muted">{{ result.location }}sqf</span>
                                                 </li>
                                                 <li class="d-flex align-items-center me-3">
                                                     <i class="mdi mdi-bed fs-5 me-2 text-primary"></i>

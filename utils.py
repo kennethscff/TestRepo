@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, session, render_template
+from flask import Blueprint, request, jsonify, session, render_template, abort
 from flask_bcrypt import Bcrypt
 from math import ceil
 
@@ -21,14 +21,20 @@ def typeahead():
 
 @utils.route('/facets', methods=['GET'])
 def facets():
-    requested_location = request.args['location']
-    if requested_location:
-        requested_location = requested_location.title()
-    return render_template('facets.html', location = requested_location)
+    facet_data = {
+        'location': request.args.get('location', ''),
+        'current_location': request.args.get('currentLocation', ''),
+        'parking': request.args.get('parking', ''),
+        'garden': request.args.get('garden', ''),
+        'accessible': request.args.get('accessible', ''),
+        'min_bedroom': request.args.get('min_bedroom', ''),
+        'max_price': request.args.get('max_price', ''),
+        'category': request.args.get('category', '')
+    }
+    return render_template('facets.html', facet_data = facet_data)
 
 @utils.route('/search', methods=['GET'])
 def search():
-    # Gather facet data from request
     facet_data = {
         'location': request.args.get('location', ''),
         'current_location': request.args.get('currentLocation', ''),
@@ -43,112 +49,112 @@ def search():
     # Dummy data for results
     results = [
         {
+            'id': 1,
             'title': 'Modern Apartment Downtown',
             'location': '123 Main St, Anytown, AT 12345',
             'price': '1200',
             'bedrooms': 2,
             'bathrooms': 2,
-            'square_feet': '850sqft',
             'match': 4,
             'image_url': './static/images/property/1.jpg'
         },
         {
+            'id': 2,
             'title': 'Modern Apartment Downtown',
             'location': '123 Main St, Anytown, AT 12345',
             'price': '1200',
             'bedrooms': 2,
             'bathrooms': 2,
-            'square_feet': '850sqft',
             'match': 4,
             'image_url': './static/images/property/1.jpg'
         },
         {
+            'id': 3,
             'title': 'Modern Apartment Downtown',
             'location': '123 Main St, Anytown, AT 12345',
             'price': '1200',
             'bedrooms': 2,
             'bathrooms': 2,
-            'square_feet': '850sqft',
             'match': 4,
             'image_url': './static/images/property/1.jpg'
         },
         {
+            'id': 4,
             'title': 'Modern Apartment Downtown',
             'location': '123 Main St, Anytown, AT 12345',
             'price': '1200',
             'bedrooms': 2,
             'bathrooms': 2,
-            'square_feet': '850sqft',
             'match': 4,
             'image_url': './static/images/property/1.jpg'
         },
         {
+            'id': 5,
             'title': 'Modern Apartment Downtown',
             'location': '123 Main St, Anytown, AT 12345',
             'price': '1200',
             'bedrooms': 2,
             'bathrooms': 2,
-            'square_feet': '850sqft',
             'match': 4,
             'image_url': './static/images/property/1.jpg'
         },
         {
+            'id': 6,
             'title': 'Modern Apartment Downtown',
             'location': '123 Main St, Anytown, AT 12345',
             'price': '1200',
             'bedrooms': 2,
             'bathrooms': 2,
-            'square_feet': '850sqft',
             'match': 4,
             'image_url': './static/images/property/1.jpg'
         },
         {
+            'id': 7,
             'title': 'Modern Apartment Downtown',
             'location': '123 Main St, Anytown, AT 12345',
             'price': '1200',
             'bedrooms': 2,
             'bathrooms': 2,
-            'square_feet': '850sqft',
             'match': 4,
             'image_url': './static/images/property/1.jpg'
         },
         {
+            'id': 8,
             'title': 'Modern Apartment Downtown',
             'location': '123 Main St, Anytown, AT 12345',
             'price': '1200',
             'bedrooms': 2,
             'bathrooms': 2,
-            'square_feet': '850sqft',
             'match': 4,
             'image_url': './static/images/property/1.jpg'
         },
         {
+            'id': 9,
             'title': 'Modern Apartment Downtown',
             'location': '123 Main St, Anytown, AT 12345',
             'price': '1200',
             'bedrooms': 2,
             'bathrooms': 2,
-            'square_feet': '850sqft',
             'match': 4,
             'image_url': './static/images/property/1.jpg'
         },
         {
+            'id': 10,
             'title': 'Modern Apartment Downtown',
             'location': '123 Main St, Anytown, AT 12345',
             'price': '1200',
             'bedrooms': 2,
             'bathrooms': 2,
-            'square_feet': '850sqft',
             'match': 4,
             'image_url': './static/images/property/1.jpg'
         },
         {
+            'id': 11,
             'title': 'Modern Apartment Downtown',
             'location': '123 Main St, Anytown, AT 12345',
             'price': '1200',
             'bedrooms': 2,
             'bathrooms': 2,
-            'square_feet': '850sqft',
             'match': 4,
             'image_url': './static/images/property/1.jpg'
         },
@@ -173,3 +179,25 @@ def search():
 
     # Render the template, passing the necessary data
     return render_template('search_results.html', facet_data=facet_data, results=page_results, current_page=page, total_pages=total_pages, query_params=query_params)
+
+@utils.route('/property/<property_id>', methods=['GET'])
+def get_property(property_id):
+    if not property_id:
+        abort(404, 'Page not found')
+
+    #dummy data
+    data = {
+            'id': 11,
+            'location': '123 Main St, Anytown, AT 12345',
+            'bedrooms': 2,
+            'bathrooms': 2,
+            'match': 4,
+            'image_url': '../static/images/property/1.jpg',
+            'landlord': 'Gorbals Housing Association',
+            'last_active': '16',
+            'parking': 'Yes',
+            'garden': 'Shared',
+            'price': '450',
+            'description': "This spacious tenement flat in Glasgow's vibrant West End boasts classic charm and modern convenience. High ceilings and original features create an airy feel, while the updated kitchen and bathroom offer a touch of contemporary style.<br><br>Two generously sized bedrooms provide comfortable living space, ideal for sharing or a small family. The added bonus of a designated parking space takes the stress out of city living - a true rarity within Glasgow's bustling streets.<br><br>Imagine strolling to nearby cafes and independent shops on Byres Road, or enjoying a picnic in Kelvingrove Park. This tenement offers the best of both worlds:  city living with the ease of parking and access to green spaces."
+        }
+    return render_template('property.html', data=data)

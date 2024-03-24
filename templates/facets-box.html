@@ -1,8 +1,5 @@
 <div class="card bg-white p-4 rounded-3 shadow sticky-bar">
     <form id="searchForm" method="GET" onsubmit="handleSubmit(event)">
-        <div class="mt-2 mb-4">
-            <h5>Searching for homes in {{ location }}</h5>
-        </div>
 
 <!-- Desired Location -->
 <h6 class="mb-0">Desired Location</h6>
@@ -12,7 +9,7 @@
 </div>
 
 <!-- Current Location -->
-<h6 class="mb-0">Current Location (We will use this to find suitable swaps)</h6>
+<h6 class="mb-0 mt-4">Current Location (We will use this to find suitable swaps)</h6>
 <div class="typeahead-wrapper mt-2">
     <input type="text" class="form-control rounded-3 border" name="currentLocation" id="current-keyword" placeholder="Birmingham, Leeds, etc" oninput="fetchTypeahead(this.value, 'current-keyword', 'current-typeahead-suggestions')" value="{{ facet_data.current_location }}">
     <div id="current-typeahead-suggestions" class="suggestions-container"></div>
@@ -69,7 +66,7 @@
             <option value="400" {{ 'selected' if facet_data.max_price == '400' else '' }}>200-400</option>
             <option value="600" {{ 'selected' if facet_data.max_price == '600' else '' }}>400-600</option>
             <option value="800" {{ 'selected' if facet_data.max_price == '800' else '' }}>600-800</option>
-            <option value="Any" {{ 'selected' if facet_data.max_price == 'Any' else '' }}>800+</option>
+            <option value="801" {{ 'selected' if facet_data.max_price == '801' else '' }}>800+</option>
         </select>
 
         <button type="submit" class="btn btn-primary w-100 mt-4">Find properties</button>
