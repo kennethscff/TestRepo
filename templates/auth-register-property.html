@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-	{% include 'head.html' %}
+    {% include 'head.html' %}
 
     <body>        
         <!-- Navbar Start -->
@@ -11,53 +11,101 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <div class="p-4 bg-white rounded-3 shadow-md mx-auto w-100" style="max-width: 400px;">
+                        <div class="p-4 bg-white rounded-3 shadow-md mx-auto w-100" style="max-width: 600px;">
                             <form>
                                 <a href="index.html"><img src="images/logo-icon-80.png" class="mb-4 d-block mx-auto" alt=""></a>
-                                <h5 class="mb-3">Register your account</h5>
-                            
+                                <h5 class="mb-3">Post your home</h5>
+
                                 <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="Harry">
-                                    <label for="floatingInput">First Name</label>
+                                    <input type="text" class="form-control" id="homeAddress" placeholder="G1 1XX">
+                                    <label for="homeAddress">Postcode*</label>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="imageUpload1" class="form-label">Upload Image 1*</label>
+                                    <input class="form-control" type="file" id="imageUpload1" accept="image/*">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="imageUpload2" class="form-label">Upload Image 2</label>
+                                    <input class="form-control" type="file" id="imageUpload2" accept="image/*">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="imageUpload3" class="form-label">Upload Image 3</label>
+                                    <input class="form-control" type="file" id="imageUpload3" accept="image/*">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="imageUpload4" class="form-label">Upload Image 4</label>
+                                    <input class="form-control" type="file" id="imageUpload4" accept="image/*">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="imageUpload5" class="form-label">Upload Image 5</label>
+                                    <input class="form-control" type="file" id="imageUpload5" accept="image/*">
                                 </div>
 
                                 <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="Harry">
-                                    <label for="floatingInput">Surname</label>
+                                    <select class="form-select" id="homeType" aria-label="Home Type">
+                                        <option selected>Detached</option>
+                                        <option value="apartment">Sem-Detached</option>
+                                        <option value="house">Apartment</option>
+                                        <option value="villa">Other</option>
+                                    </select>
+                                    <label for="homeType">Type of Home*</label>
                                 </div>
 
                                 <div class="form-floating mb-2">
-                                    <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
-                                    <label for="floatingEmail">Email Address</label>
+                                    <input type="number" class="form-control" id="bedrooms" placeholder="3">
+                                    <label for="bedrooms">Number of Bedrooms*</label>
                                 </div>
+
+                                <div class="form-floating mb-2">
+                                    <input type="text" class="form-control" id="monthlyRent" placeholder="£1000">
+                                    <label for="monthlyRent">Monthly Rent*</label>
+                                </div>
+
+                                <div class="form-floating mb-2">
+                                    <select class="form-select" id="parking" aria-label="Parking Availability">
+                                        <option selected>No</option>
+                                        <option value="available">On-street</option>
+                                        <option value="not available">Off-street</option>
+                                        <option value="not available">Driveway</option>
+                                    </select>
+                                    <label for="parking">Parking</label>
+                                </div>
+
+                                <div class="form-floating mb-2">
+                                    <select class="form-select" id="garden" aria-label="Parking Availability">
+                                        <option selected>No</option>
+                                        <option value="available">Shared</option>
+                                        <option value="not available">Private</option>
+                                    </select>
+                                    <label for="garden">Garden</label>
+                                </div>
+
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="accessible">
+                                    <label class="form-check-label" for="accessible">Accessible</label>
+                                </div>
+
 
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                                    <label for="floatingPassword">Password</label>
+                                    <textarea class="form-control" placeholder="Describe your home" id="homeDescription" style="height: 100px; padding-right: 125px;"></textarea>
+                                    <label for="homeDescription">Home Description</label>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm position-absolute top-0 end-0 mt-3 me-3">Enhance with AI</button>
                                 </div>
-
-                                <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                                    <label for="floatingPassword">Repeat Password</label>
-                                </div>
-                            
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label text-muted" for="flexCheckDefault">I accept the <a href="#" class="text-secondary">terms and condition</a></label>
-                                </div>
+                                
                 
-                                <button class="btn btn-primary w-100" type="submit">Register</button>
-
-                                <div class="col-12 text-center mt-3">
-                                    <span><span class="text-muted me-2">Already have an account? </span> <a href="/login" class="text-dark fw-medium">Sign in</a></span>
-                                </div><!--end col-->
+                                <button class="btn btn-primary w-100" type="submit">Post your home</button>
                             </form>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
             </div><!--end container-->
         </section><!--end section-->
-        <!-- ENd Hero -->
+        <!-- End Hero -->
 
         {% include 'footer.html' %}
         
@@ -65,9 +113,9 @@
         <script src="./static/js/bootstrap.bundle.min.js"></script>
         <!-- Icons -->
         <script src="./static/js/feather.min.js"></script>
-	    <!-- Custom -->
-	    <script src="./static/js/plugins.init.js"></script>
-	    <script src="./static/js/app.js"></script>
+        <!-- Custom -->
+        <script src="./static/js/plugins.init.js"></script>
+        <script src="./static/js/app.js"></script>
     </body>
 
 </html>

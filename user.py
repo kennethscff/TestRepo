@@ -17,6 +17,10 @@ def render_login():
 def render_register():
     return render_template('auth-register.html')
 
+@users.route('/register-property', methods=["GET"])
+def render_register_property():
+    return render_template('auth-register-property.html')
+
 @users.route('/register', methods=["POST"])
 def register():
     data = request.get_json()

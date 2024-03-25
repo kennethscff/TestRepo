@@ -3125,11 +3125,12 @@ button:not(:disabled) {
 /*            Home               */
 /*===============================*/
 .bg-home {
-  height: 100vh;
+  height: auto;
   background-size: cover !important;
   align-self: center;
   position: relative;
   background-position: center center;
+  padding: 150px 0 !important;
 }
 
 @media (max-width: 767px) {
