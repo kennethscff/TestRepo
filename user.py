@@ -13,23 +13,29 @@ def render_login():
     session['next'] = request.referrer
     return render_template('auth-login.html')
 
+@users.route('/register', methods=["GET"])
+def render_register():
+    return render_template('auth-register.html')
+
 @users.route('/register', methods=["POST"])
 def register():
     data = request.get_json()
     email = data.get('email')
     password = data.get('password')
 
-    # Input validation (ensure email and password exist, etc.)
+    # Hash the password
+    hashed_pw = bcrypt.generate_password_hash(password).decode('utf-8')
 
     user = Resident.query.filter_by(email=email).first()
     if user:
         return jsonify({'error': 'Email already exists'}), 400
 
-    new_user = Resident(email=email, password=password)  # Uses password setter
+    new_user = Resident(email=email, password_hash=hashed_pw)
     db.session.add(new_user)
     db.session.commit()
 
-    return jsonify({'message': 'User created successfully'}), 201
+    # Redirect to a new template on successful registration
+    return render_template('auth-register-property.html'), 201
 
 @users.route('/login', methods=['POST'])
 def login():

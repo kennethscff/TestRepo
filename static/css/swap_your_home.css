@@ -1,0 +1,25 @@
+.premium-plan-card {
+    position: relative;
+    overflow: hidden; /* ensures nothing hangs outside the card */
+    /* Add any additional styling for the card here */
+  }
+  
+  .premium-label {
+    position: absolute;
+    top: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    background-color: #a6276f;
+    color: white;
+    padding: 5px 15px;
+    font-size: 14px;
+    border-radius: 5px; /* Rounds the corners */
+    /* Remove the rotation to keep the label inside the card */
+  }
+  
+  .text-swap-primary {
+    color: #a6276f;
+  }
+
+  .text-swap-secondary {
+    color: #000000;
+  }

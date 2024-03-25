@@ -201,3 +201,7 @@ def get_property(property_id):
             'description': "This spacious tenement flat in Glasgow's vibrant West End boasts classic charm and modern convenience. High ceilings and original features create an airy feel, while the updated kitchen and bathroom offer a touch of contemporary style.<br><br>Two generously sized bedrooms provide comfortable living space, ideal for sharing or a small family. The added bonus of a designated parking space takes the stress out of city living - a true rarity within Glasgow's bustling streets.<br><br>Imagine strolling to nearby cafes and independent shops on Byres Road, or enjoying a picnic in Kelvingrove Park. This tenement offers the best of both worlds:  city living with the ease of parking and access to green spaces."
         }
     return render_template('property.html', data=data)
+
+@utils.route('/swap', methods=['GET'])
+def swap_property():
+    return render_template('swap_your_home.html')

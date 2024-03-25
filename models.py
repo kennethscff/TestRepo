@@ -39,10 +39,10 @@ class DesiredLocation(db.Model):
 class Resident(db.Model):
     __tablename__ = 'resident'
     resident_id = db.Column(db.Integer, primary_key=True)
+    resident_location_id = db.Column(db.Integer, nullable=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(120), nullable=False)
-
-    # ... other fields you'd like to store
+    address_id = db.Column(db.Integer, nullable=True, default=0)
 
     @property
     def password(self):

@@ -53,7 +53,7 @@
                     <!-- User is not logged in, show Log in/Register -->
                     <li class="list-inline-item ps-1 mb-0">
                         <a href="/login" class="btn btn-primary">
-                            <i data-feather="user" class="icons"></i> Login
+                            <i data-feather="user" class="icons"></i> Sign in
                         </a>
                     </li>
                     {% else %}
@@ -71,8 +71,7 @@
                 <div id="navigation">
                     <ul class="navigation-menu nav-left">
                         <li><a href="/search">Search</a></li>
-                        <li><a href="buy.html" class="sub-menu-item">Swap your home</a></li>
-                        <li><a href="sell.html" class="sub-menu-item">Commercial</a></li>
+                        <li><a href="/swap" class="sub-menu-item">Swap your home</a></li>
                         {% if session.get('user_id') %}
                         <li class="has-submenu parent-parent-menu-item">
                             <a href="javascript:void(0)">Account</a><span class="menu-arrow"></span>
