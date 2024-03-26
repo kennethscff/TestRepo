@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="p-4 bg-white rounded-3 shadow-md mx-auto w-100" style="max-width: 600px;">
-                            <form>
+                            <form id="propertyForm">
                                 <a href="index.html"><img src="images/logo-icon-80.png" class="mb-4 d-block mx-auto" alt=""></a>
                                 <h5 class="mb-3">Post your home</h5>
 
@@ -27,22 +27,22 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="imageUpload2" class="form-label">Upload Image 2</label>
+                                    <label for="imageUpload2" class="form-label">Upload Image 2 (Premium Feature)</label>
                                     <input class="form-control" type="file" id="imageUpload2" accept="image/*">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="imageUpload3" class="form-label">Upload Image 3</label>
+                                    <label for="imageUpload3" class="form-label">Upload Image 3 (Premium Feature)</label>
                                     <input class="form-control" type="file" id="imageUpload3" accept="image/*">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="imageUpload4" class="form-label">Upload Image 4</label>
+                                    <label for="imageUpload4" class="form-label">Upload Image 4 (Premium Feature)</label>
                                     <input class="form-control" type="file" id="imageUpload4" accept="image/*">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="imageUpload5" class="form-label">Upload Image 5</label>
+                                    <label for="imageUpload5" class="form-label">Upload Image 5 (Premium Feature)</label>
                                     <input class="form-control" type="file" id="imageUpload5" accept="image/*">
                                 </div>
 
@@ -93,12 +93,40 @@
 
                                 <div class="form-floating mb-3">
                                     <textarea class="form-control" placeholder="Describe your home" id="homeDescription" style="height: 100px; padding-right: 125px;"></textarea>
-                                    <label for="homeDescription">Home Description</label>
+                                    <label for="homeDescription">Home Description*</label>
                                     <button type="button" class="btn btn-outline-secondary btn-sm position-absolute top-0 end-0 mt-3 me-3">Enhance with AI</button>
                                 </div>
                                 
                 
+                                <!-- Section for choosing between Free and Premium listings -->
+                                <div class="row g-4 my-4">
+                                    <!-- Basic Plan Card -->
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="card rounded-3 shadow listing-card" onclick="selectListingType('basic')" id="basicCard">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Basic Listing</h5>
+                                                <p class="card-text">Includes 1 image upload and basic visibility.</p>
+                                                <p class="fw-bold">Free</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Premium Plan Card -->
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="card rounded-3 shadow listing-card premium-plan-card" onclick="selectListingType('premium')" id="premiumCard">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Premium Listing</h5>
+                                                <p class="card-text">Enjoy up to 5 image uploads, featured positioning, and an hourly match checker.</p>
+                                                <p class="text-muted"><small>*Features available for 14 days from the point of purchase.</small></p>
+                                                <p class="fw-bold">£19.99</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                                 <button class="btn btn-primary w-100" type="submit">Post your home</button>
+
+                                <!-- ... rest of the form ... -->
                             </form>
                         </div>
                     </div><!--end col-->
@@ -116,6 +144,7 @@
         <!-- Custom -->
         <script src="./static/js/plugins.init.js"></script>
         <script src="./static/js/app.js"></script>
+        <script src="./static/js/register.js"></script>
     </body>
 
 </html>

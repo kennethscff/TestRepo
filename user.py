@@ -41,6 +41,13 @@ def register():
     # Redirect to a new template on successful registration
     return render_template('auth-register-property.html'), 201
 
+@users.route('/register-property', methods=["POST"])
+def register_prpoerty():
+    #Need to update
+
+    # Redirect to a new template on successful registration
+    return render_template('my-account.html'), 201
+
 @users.route('/login', methods=['POST'])
 def login():
     data = request.get_json()

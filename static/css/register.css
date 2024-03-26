@@ -1,0 +1,13 @@
+.listing-card {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.listing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.selected-card {
+    border: 2px solid #a6276f; /* Bootstrap primary color for example */
+}
